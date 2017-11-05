@@ -1,0 +1,3 @@
+# Inventory for Playbook ansible-windows
+[local]
+localhost
