@@ -1,0 +1,49 @@
+# tasks/setup_and_configure_iis.yaml
+# version 1.0, d.d. 5 november 2017 by RME
+# This playbook installs IIS on a Windows 2012 R2 server using WinRM and basic authentication.
+# 
+---
+- name: setup and configure IIS
+  vars_files:
+    - vars/main.yaml
+    - vars/basic_authentication.yaml
+    
+  tasks:
+    - block:
+      - name: Test connectivity
+        win_ping:
+      - name: Ensure SNMP is started
+        win_service:
+          name: snmptrap
+          state: started
+
+    - block:
+      - name: Install IIS
+        win_feature:
+          name: "Web-Server"
+          state: present
+          restart: yes
+          include_sub_features: true
+          include_management_tools: true
+
+      - name: Deploy webserver
+        win_copy:
+          src: files/welcome.html
+          dest: c:/inetpub/wwwroot/index.html
+        notify:
+          - reset_iis
+
+      - name: Restart Application Pool
+        win_iis_webapppool:
+          name: "DefaultAppPool"
+          state: restarted
+
+  handlers:
+    - name: reset_iis
+      win_service:
+        name: w3svc
+        state: restarted
+
+
+
+
