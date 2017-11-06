@@ -35,7 +35,9 @@ WinRM is already installed on a stock Windows 2012R2 installation. We need to se
 On the Windows 2012R2 server, we need:
 * .NET Framework 4.6 or higher
 * Windows Management Framework 5.0 or higher
-* Python 2.7 or higher
+
+Different from Ansible on Linux, on Windows execution is by use of PowerShell and the .NET framework.
+
 
 ## Steps
 1. create a ansible account called 'remoteuser' with a password on the Windows 2012R2 server
