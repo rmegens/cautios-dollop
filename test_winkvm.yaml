@@ -1,0 +1,11 @@
+# test_winkvm.yaml
+# Test connectivity and groupvar for Windows 2012R2 on KVM
+---
+- name: Test connectivity
+  hosts: winkvm
+  vars_files:
+    - group_vars/winkvm.yaml
+
+  tasks:
+    - name: Do winPing
+      win_ping:

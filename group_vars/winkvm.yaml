@@ -1,0 +1,6 @@
+# variables for Windows 2012R2 on KVM
+ansible_user: Administrator
+ansible_password: 'Frisbee1!'
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: 'ignore'
+ansible_port: 5985

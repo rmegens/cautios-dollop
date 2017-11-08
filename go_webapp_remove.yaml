@@ -1,0 +1,18 @@
+---
+- name: go and do something on Windows
+  hosts: winkvm
+  ignore_errors: true
+ # vars_files:
+ #   - vars/main.yaml
+ #   - vars/basic_authentication.yaml
+  
+  tasks:
+    - name: Get setup IIS and go do you thing
+      include: tasks/byebyeiis.yaml
+
+  handlers:
+    - name: reset_iis
+      win_service:
+        name: w3svc
+        state: restarted
+

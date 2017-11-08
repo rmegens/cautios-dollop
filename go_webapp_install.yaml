@@ -1,0 +1,22 @@
+# go_webapp_install.yaml
+# 1.0, d.d. 7 nov 2017 by rikmegens@work-smarter.nl (learn-smarter-online.com)
+# demo playbook to install IIS and an index page onto a Windows 2012R2 managed node
+# with basic authentication.
+---
+- name: go and do something on Windows
+  hosts: winkvm
+  ignore_errors: true
+ # vars_files:
+ #   - vars/main.yaml
+ #   - vars/basic_authentication.yaml
+  
+  tasks:
+    - name: Get setup IIS and go do you thing
+      include: tasks/setup_and_configure_iis.yaml
+
+  handlers:
+    - name: reset_iis
+      win_service:
+        name: w3svc
+        state: restarted
+

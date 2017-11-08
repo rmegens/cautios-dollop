@@ -1,3 +1,22 @@
 # Inventory for Playbook ansible-windows
 [local]
 localhost
+
+[winaws]
+ec2-54-171-94-237.eu-west-1.compute.amazonaws.com
+
+#[winaws:vars]
+#ansible_user=Administrator
+#ansible_password='-LSKJ?rrLh8'
+#ansible_connection=winrm
+#ansible_winrm_server_cert_validation='ignore'
+
+[winkvm]
+192.168.122.166
+
+#[winkvm:vars]
+#ansible_user=Administrator
+#ansible_password=Frisbee1!
+#ansible_connection=winrm
+#ansible_winrm_server_cert_validation='ignore'
+#ansible_port=5985

@@ -1,0 +1,6 @@
+# variables for Windows 2012R2 on AWS
+ansible_user: Administrator
+ansible_password: '-LSKJ?rrLh8'
+ansible_connection: winrm
+ansible_winrm_server_cert_validation: 'ignore'
+
